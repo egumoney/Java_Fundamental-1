@@ -26,6 +26,24 @@ public class WhileDemo {
 			j++;
 		}//end outter while
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
 
