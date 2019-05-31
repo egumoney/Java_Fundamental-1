@@ -5,7 +5,8 @@ public class Constructor {
 	private String email;
 	private int age;
 	
-	// 디폴트 생성자
+	// 디폴트 생성자 : 클래스내에 생성자가 없는 경우 compiler가 자동으로 생성해준다.
+	// 클래스내에 생성자가 1개 라도 있는 경우는 compiler 생성해주지 않는다.
 	// 생성자는 클래스 이름과 같고, 반환값이 없는 형태를 가지고 있다.
 	public Constructor(){
 		
@@ -32,6 +33,11 @@ public class Constructor {
 		System.out.println(c.name);
 		System.out.println(c.email);
 		System.out.println(c.age);
+		
+		c = new Constructor();
+		c.name = "성영한";
+		c.email = "syh@hbilab.org";
+		c.age = 10;
 		
 		c = new Constructor("문재인","jimoon@bluehouse.org");
 		System.out.println(c.name);
