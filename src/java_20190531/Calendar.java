@@ -36,7 +36,7 @@ public class Calendar {
 		}
 		
 		//해당 년도가 윤년인지 판단하고 윤년인 경우 3월 이상이면 1을 추가해준다.
-		if (month >=3 && (year%4==0 && year%100 != 0 || year%400==0 )) {
+		if (month >=3 && isLeafYear(year)) {
 			totalCnt++;
 		}
 		
