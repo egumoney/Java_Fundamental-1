@@ -9,17 +9,22 @@ public class Calendar {
 	public static final int FRIDAY = 5;
 	public static final int SATURDAY = 6;
 	
-	public boolean isLeafYear(int year){
+	//윤년인지 아닌지를 판단하는 메서드 매개변수가 윤년이면 true, 아니면 false
+	private boolean isLeafYear(int year){
+		
 		boolean isLeafYear = false;
 		if((year%4==0 && year%100 != 0 || year%400==0 )){
 			isLeafYear = true;
 		}
 		return isLeafYear;
 	}
-	
-	public int getCount(int year, int month, int day){
+	//1년 1월 1일 부터 ~ 년,월,일의 총일수을 구하는 메서드 
+	private int getCount(int year, int month, int day){
+		//총일수 구할때는 년도는 이전년도까지 일수을 구해야 하기 때문에 preYear 변수를 설정
 		int preYear = year - 1;
+		//해당 년도의 이전달을 저장하기 위한 변수
 		int preMonth = month - 1;
+		
 		int totalCnt = 0;
 		
 		//2018년도 일 수 구하기
@@ -44,9 +49,11 @@ public class Calendar {
 		return totalCnt;
 	}
 	
-	public int getLastDay(int year, int month){
+	//년도의 매월 마지막날짜를 구하는 메서드
+	private int getLastDay(int year, int month){
 		int[] monthArray = {31,28,31,30,31,30,31,31,30,31,30,31};
 		if(isLeafYear(year)){
+			//윤년이면 2월을 29일로 바꿔야 한다.
 			monthArray[1] = 29;
 		}	
 		return monthArray[month-1];
@@ -55,28 +62,43 @@ public class Calendar {
 	
 	
 	public void print(int year) {
-		// TODO Auto-generated method stub
+		for(int i=1;i<=12;i++){
+			print(year,i);
+		}
 		
 	}
-
+	
 	public void print(int year, int month) {
 		// TODO Auto-generated method stub
 		
 		System.out.println(year+"년"+month+"월 달력 입니다.");
 		System.out.println("일\t월\t화\t수\t목\t금\t토");
 		
+		//시작날짜 
 		int start = 1;
+		//마지막 날짜 
 		int end = getLastDay(year, month);
-		int rest = getCount(year,month,1)%7;
+		//2019년 5월 1일의 요일을 구함.
+		int dayOfWeek = getCount(year,month,1)%7;
 		
-		for(int i=0;i<rest;i++){
+		
+		//월요일이면 dayOfWeek => 1
+		//화요일이면 dayOfWeek => 2
+		//...................
+		//토요일이면 dayOfWeek => 6
+		//일요일이면 dayOfWeek => 0
+		
+		//요일수 만큼 탭 처리
+		for(int i=0;i<dayOfWeek;i++){
 			System.out.print("\t");
 		}
 		
 		for(int i=start;i<=end;i++){
 			System.out.print(i+"\t");
-			rest++;
-			if(rest%7==0){
+			//dayOfWeek을 증가해서
+			dayOfWeek++;
+			//dayOfWeek가 7이되면 개행을 해준다.
+			if(dayOfWeek%7==0){
 				System.out.println();
 			}
 				
