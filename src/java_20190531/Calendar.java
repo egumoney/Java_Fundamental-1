@@ -62,6 +62,29 @@ public class Calendar {
 	public void print(int year, int month) {
 		// TODO Auto-generated method stub
 		
+		System.out.println(year+"년"+month+"월 달력 입니다.");
+		System.out.println("일\t월\t화\t수\t목\t금\t토");
+		
+		int start = 1;
+		int end = getLastDay(year, month);
+		int rest = getCount(year,month,1)%7;
+		
+		for(int i=0;i<rest;i++){
+			System.out.print("\t");
+		}
+		
+		for(int i=start;i<=end;i++){
+			System.out.print(i+"\t");
+			rest++;
+			if(rest%7==0){
+				System.out.println();
+			}
+				
+		}
+		System.out.println();
+		
+		
+		
 	}
 
 	public void print(int year, int month, int day) {
