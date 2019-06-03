@@ -17,6 +17,7 @@ public class LotteryDemo {
 			System.out.print("로또복권 개수를 입력하세요>");
 			String readLine = console();
 			if(readLine.equals("bye")) break;
+			
 			int count = Integer.parseInt(readLine);
 			lottery.print(count);
 			
