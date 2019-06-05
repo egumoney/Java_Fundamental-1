@@ -55,21 +55,74 @@ public class StringDemo {
 		s1 = s1.toUpperCase();
 		System.out.println(s1);
 		
+		System.out.println(ssn.indexOf("-"));
+		System.out.println(ssn.lastIndexOf("-"));
 		
+		ssn = ssn.replaceAll("-", "*");
+		System.out.println(ssn);
 		
+		String html ="안녕하세요\n저는 성영한입니다.\n앞으로 잘 부탁드립니다.";
+		html = html.replaceAll("\n", "<br>");
+		System.out.println(html);
+		//234567-8923456
+		String ssn1 = ssn.substring(0,ssn.indexOf("*"));
+		String ssn2 = ssn.substring(ssn.indexOf("*")+1);
 		
+		System.out.println(ssn1);
+		System.out.println(ssn2);
 		
+		fileName = "abc.def.ghi.zip";
+		String fileName1 = fileName.substring(0,fileName.lastIndexOf("."));
+		String fileName2 = fileName.substring(fileName.lastIndexOf(".")+1);
 		
+		System.out.println(fileName1);
+		System.out.println(fileName2);
 		
+		fileName1 = "hello";
+		fileName2 = "hello ";
+		System.out.println(fileName1.length());
+		System.out.println(fileName2.length());
+		if(fileName1.equals(fileName2.trim())){
+			System.out.println("성공");
+		}else{
+			System.out.println("실패");
+		}
 		
+		int a = 10;
 		
+		String t1 = String.valueOf(a);
+		String t2 = a+"";
+		System.out.println(t1);
 		
+		//234567-8923456
+		ssn = "234567-8923456";
+		String[] t3 = ssn.split("-");
+		System.out.println(t3[0]);
+		System.out.println(t3[1]);
 		
+		String t4 = String.format("%,.2f and %,.2f",
+				10000.234, 200000000.345);
+		System.out.println(t4);
 		
-		
-		
-		String str = String.format("%1$,20.2f%2$,20.2f%3$,20.2f", 111111.111111,222222.222222,33333.33333);
+		String str = String.format("%,.2f , %,.2f , %,.2f",
+				1111.11,2222.22,3333.33);
 		
 		System.out.println(str);
+		
+		int b1  = 10;
+		int b2  = 20;
+		System.out.printf("b1의 값은 %d 이고요, b2의 값은 %d 입니다.", b1, b2);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
