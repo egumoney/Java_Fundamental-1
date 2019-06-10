@@ -15,13 +15,7 @@ public class ConsoleApplication {
 		System.out.println("1. Insert 2. Update 3. Delete 4. Search 5. Exit");
 		System.out.println("***********************************************");
 	}
-	//키보드로 입력받은 한줄을 반환하는 함수
-	public String console(String message) throws IOException{
-		System.out.print(message);
-		BufferedReader br = new BufferedReader(
-				new InputStreamReader(System.in));
-		return br.readLine();
-	}
+	
 	public void execute(String message) throws IOException{
 		if(message.equals("1")){
 			insert();
@@ -140,7 +134,13 @@ public class ConsoleApplication {
 		
 		common();
 	}
-	
+	//키보드로 입력받은 한줄을 반환하는 함수
+	public String console(String message) throws IOException{
+		System.out.print(message);
+		BufferedReader br = new BufferedReader(
+				new InputStreamReader(System.in));
+		return br.readLine();
+	}
 	
 	public static void main(String[] args) throws IOException {
 		ConsoleApplication c = new ConsoleApplication();
