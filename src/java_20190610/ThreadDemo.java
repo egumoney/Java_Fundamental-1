@@ -1,9 +1,11 @@
 package java_20190610;
 
 public class ThreadDemo extends Thread{
+	int x,y;
 	public ThreadDemo(String msg){
+		//Thread클래스의 매개변수가 문자열인 생성자를 호출
+		//msg는 스레드 이름을 정한다.
 		super(msg);
-		
 	}
 	
 	public void run() {
