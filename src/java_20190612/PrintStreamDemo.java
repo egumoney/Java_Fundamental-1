@@ -21,6 +21,8 @@ public class PrintStreamDemo {
 			
 			fos = new FileOutputStream("c:\\down\\2019\\eclipse.zip");
 			bos = new BufferedOutputStream(fos);
+			
+			//PrintStream의 목적지가 파일
 			ps = new PrintStream(bos,true);//true=> autoFlush
 			
 			int readByteCount = 0;
@@ -29,8 +31,17 @@ public class PrintStreamDemo {
 				ps.write(readBytes,0,readByteCount);
 			}
 			
+			//PrintStream의 목저지를 모니터
+			PrintStream ps1 = System.out;
+			ps1.println(1);
+			ps1.println("aaaa");
+			ps1.println(42.5);
+			
+			
+			
 		} catch (IOException e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			try {
 				if(fis != null) fis.close();
