@@ -1,7 +1,5 @@
 package java_20190603;
 
-import java.util.HashSet;
-
 public class Lottery {
 
 	public static void print(int count) {

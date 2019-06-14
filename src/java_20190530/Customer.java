@@ -1,6 +1,8 @@
 package java_20190530;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable{
 	//instance variable
 	String name;
 	String cphone;

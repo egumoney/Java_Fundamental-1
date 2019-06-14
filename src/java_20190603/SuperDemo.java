@@ -1,5 +1,5 @@
 package java_20190603;
-import java.lang.*;
+
 class A {
 	String name;
 	A(){}

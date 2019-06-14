@@ -1,7 +1,11 @@
 package java_20190613;
 
 //네이버 캡차 API 예제 - 캡차 이미지 수신
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Date;
