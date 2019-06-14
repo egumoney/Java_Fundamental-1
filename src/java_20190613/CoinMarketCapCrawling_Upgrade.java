@@ -19,7 +19,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class CoinMarketCapCrawling_Upgrade {
-	public String getKoreanDate(String date){
+	private String getKoreanDate(String date){
 		String koreanDate = null;
 		SimpleDateFormat from = new SimpleDateFormat("MMM dd, yyyy",Locale.US);
 		SimpleDateFormat to = new SimpleDateFormat("yyyy³â MM¿ù ddÀÏ",Locale.KOREAN);
@@ -46,42 +46,40 @@ public class CoinMarketCapCrawling_Upgrade {
 
 		Elements headElements = doc.select(".table-responsive .table thead tr");
 		Elements bodyElements = doc.select(".table-responsive .table tbody tr");
-		int crawlingIndex = 0;
-		int excelIndex = 0;
+		
 		int rowIndex = 0;
 		HSSFRow row = null;
 		HSSFCell cell = null;
 		for (int i = 0; i < headElements.size(); i++) {
-			excelIndex = 0;
-			crawlingIndex = 0;
+			
 			row = sheet.createRow(rowIndex++);
 			Element e = (Element) headElements.get(i);
-			String date = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String date = e.child(0).text();
+			cell = row.createCell(0);
 			cell.setCellValue(date);
 
-			String open = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String open = e.child(1).text();
+			cell = row.createCell(1);
 			cell.setCellValue(open);
 
-			String high = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String high = e.child(2).text();
+			cell = row.createCell(2);
 			cell.setCellValue(high);
 
-			String low = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String low = e.child(3).text();
+			cell = row.createCell(3);
 			cell.setCellValue(low);
 
-			String close = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String close = e.child(4).text();
+			cell = row.createCell(4);
 			cell.setCellValue(close);
 
-			String volume = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String volume = e.child(5).text();
+			cell = row.createCell(5);
 			cell.setCellValue(volume);
 
-			String marketCap = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String marketCap = e.child(6).text();
+			cell = row.createCell(6);
 			cell.setCellValue(marketCap);
 
 			System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s%n", date, open, high, low, close, volume, marketCap);
@@ -89,38 +87,37 @@ public class CoinMarketCapCrawling_Upgrade {
 		}
 
 		for (int i = 0; i < bodyElements.size(); i++) {
-			excelIndex = 0;
-			crawlingIndex = 0;
+			
 			row = sheet.createRow(rowIndex++);
 			Element e = (Element) bodyElements.get(i);
-			String date = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String date = e.child(0).text();
+			cell = row.createCell(0);
 			cell.setCellValue(getKoreanDate(date));
 
-			String open = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String open = e.child(1).text();
+			cell = row.createCell(1);
 			cell.setCellValue(Double.parseDouble(open));
 
-			String high = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String high = e.child(2).text();
+			cell = row.createCell(2);
 			cell.setCellValue(Double.parseDouble(high));
 
-			String low = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String low = e.child(3).text();
+			cell = row.createCell(3);
 			cell.setCellValue(Double.parseDouble(low));
 
-			String close = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String close = e.child(4).text();
+			cell = row.createCell(4);
 			cell.setCellValue(Double.parseDouble(close));
 
-			String volume = e.child(crawlingIndex++).text();
+			String volume = e.child(5).text();
 			volume = volume.replaceAll(",", "");
-			cell = row.createCell(excelIndex++);
+			cell = row.createCell(5);
 			cell.setCellValue(Long.parseLong(volume));
 
-			String marketCap = e.child(crawlingIndex++).text();
+			String marketCap = e.child(6).text();
 			marketCap = marketCap.replaceAll(",", "");
-			cell = row.createCell(excelIndex++);
+			cell = row.createCell(6);
 			cell.setCellValue(Long.parseLong(marketCap));
 
 			System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s%n", date, open, high, low, close, volume, marketCap);
@@ -134,12 +131,12 @@ public class CoinMarketCapCrawling_Upgrade {
 			int month = c.get(Calendar.MONDAY)+1;
 			int date = c.get(Calendar.DATE);
 			
-			File path = new File("c:\\down\\"+year+"\\"+month+"\\date");
+			File path = new File("c:\\down\\"+year+"\\"+month+"\\"+date);
 			if(!path.exists()){
 				path.mkdirs();
 			}
 			path = new File(path,coinName+"-"+year+month+date+".xls");
-			fos = new FileOutputStream(path,true);
+			fos = new FileOutputStream(path);
 			workbook.write(fos);
 			fos.close();
 

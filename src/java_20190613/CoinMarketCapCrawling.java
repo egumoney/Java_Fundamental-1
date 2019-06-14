@@ -29,42 +29,39 @@ public class CoinMarketCapCrawling {
 
 		Elements headElements = doc.select(".table-responsive .table thead tr");
 		Elements bodyElements = doc.select(".table-responsive .table tbody tr");
-		int crawlingIndex = 0;
-		int excelIndex = 0;
+		
 		int rowIndex = 0;
 		HSSFRow row = null;
 		HSSFCell cell = null;
 		for (int i = 0; i < headElements.size(); i++) {
-			excelIndex = 0;
-			crawlingIndex = 0;
 			row = sheet.createRow(rowIndex++);
 			Element e = (Element) headElements.get(i);
-			String date = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String date = e.child(0).text();
+			cell = row.createCell(0);
 			cell.setCellValue(date);
 
-			String open = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String open = e.child(1).text();
+			cell = row.createCell(1);
 			cell.setCellValue(open);
 
-			String high = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String high = e.child(2).text();
+			cell = row.createCell(2);
 			cell.setCellValue(high);
 
-			String low = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String low = e.child(3).text();
+			cell = row.createCell(3);
 			cell.setCellValue(low);
 
-			String close = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String close = e.child(4).text();
+			cell = row.createCell(4);
 			cell.setCellValue(close);
 
-			String volume = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String volume = e.child(5).text();
+			cell = row.createCell(5);
 			cell.setCellValue(volume);
 
-			String marketCap = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String marketCap = e.child(6).text();
+			cell = row.createCell(6);
 			cell.setCellValue(marketCap);
 
 			System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s%n", date, open, high, low, close, volume, marketCap);
@@ -72,36 +69,34 @@ public class CoinMarketCapCrawling {
 		}
 
 		for (int i = 0; i < bodyElements.size(); i++) {
-			excelIndex = 0;
-			crawlingIndex = 0;
 			row = sheet.createRow(rowIndex++);
 			Element e = (Element) bodyElements.get(i);
-			String date = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String date = e.child(0).text();
+			cell = row.createCell(0);
 			cell.setCellValue(date);
 
-			String open = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String open = e.child(1).text();
+			cell = row.createCell(1);
 			cell.setCellValue(open);
 
-			String high = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String high = e.child(2).text();
+			cell = row.createCell(2);
 			cell.setCellValue(high);
 
-			String low = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String low = e.child(3).text();
+			cell = row.createCell(3);
 			cell.setCellValue(low);
 
-			String close = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String close = e.child(4).text();
+			cell = row.createCell(4);
 			cell.setCellValue(close);
 
-			String volume = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String volume = e.child(5).text();
+			cell = row.createCell(5);
 			cell.setCellValue(volume);
 
-			String marketCap = e.child(crawlingIndex++).text();
-			cell = row.createCell(excelIndex++);
+			String marketCap = e.child(6).text();
+			cell = row.createCell(6);
 			cell.setCellValue(marketCap);
 
 			System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s%n", date, open, high, low, close, volume, marketCap);
